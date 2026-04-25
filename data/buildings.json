@@ -1,0 +1,18 @@
+[
+  {
+    "id": "campfire",
+    "name": "Campfire",
+    "cost": { "wood": 3, "stone": 1, "food": 0 }
+  },
+  {
+    "id": "storehouse",
+    "name": "Storehouse",
+    "cost": { "wood": 4, "stone": 2, "food": 0 }
+  },
+  {
+    "id": "research_table",
+    "name": "Research Table",
+    "cost": { "wood": 5, "stone": 3, "food": 0 }
+  }
+]
+

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "base_expansion_1",
+    "name": "Base Expansion I",
+    "cost": { "wood": 5, "stone": 5, "food": 0 },
+    "effects": ["expand_base"]
+  }
+]
+

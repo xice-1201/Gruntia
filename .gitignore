@@ -1,0 +1,9 @@
+/target/
+/saves/*.json
+!/saves/.gitkeep
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.dSYM/
+

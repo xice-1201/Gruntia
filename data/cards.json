@@ -1,0 +1,38 @@
+[
+  {
+    "id": "move_step",
+    "name": "Step",
+    "kind": "Move",
+    "cost": 1,
+    "value": 1
+  },
+  {
+    "id": "gather_scrap",
+    "name": "Gather",
+    "kind": "Gather",
+    "cost": 1,
+    "value": 2
+  },
+  {
+    "id": "strike",
+    "name": "Strike",
+    "kind": "Attack",
+    "cost": 1,
+    "value": 4
+  },
+  {
+    "id": "guard",
+    "name": "Guard",
+    "kind": "Defend",
+    "cost": 1,
+    "value": 4
+  },
+  {
+    "id": "survey",
+    "name": "Survey",
+    "kind": "Search",
+    "cost": 1,
+    "value": 1
+  }
+]
+
