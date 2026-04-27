@@ -10,8 +10,8 @@ pub struct Resources {
 impl Resources {
     pub fn starter() -> Resources {
         Resources {
-            wood: 8,
-            stone: 4,
+            wood: 0,
+            stone: 0,
             food: 10,
         }
     }
@@ -31,6 +31,30 @@ impl Resources {
         self.stone += gain.stone;
         self.food += gain.food;
     }
+
+    pub fn total(&self) -> i32 {
+        self.wood + self.stone + self.food
+    }
+
+    pub fn amount(&self, index: usize) -> i32 {
+        match index {
+            0 => self.wood,
+            1 => self.stone,
+            2 => self.food,
+            _ => 0,
+        }
+    }
+
+    pub fn discard(&mut self, index: usize, amount: i32) -> i32 {
+        let amount = amount.max(0).min(self.amount(index));
+        match index {
+            0 => self.wood -= amount,
+            1 => self.stone -= amount,
+            2 => self.food -= amount,
+            _ => {}
+        }
+        amount
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -40,27 +64,31 @@ pub struct Character {
     pub max_hp: i32,
     pub attack: i32,
     pub defense: i32,
+    #[serde(default = "default_character_speed")]
+    pub speed: i32,
     pub alive: bool,
 }
 
 impl Character {
     pub fn starter_roster() -> Vec<Character> {
-        vec![
-            Character::new("Lian", 24, 3, 1),
-            Character::new("Moro", 20, 4, 0),
-        ]
+        vec![Character::new("Lian", 20, 5, 0, 10)]
     }
 
-    fn new(name: &str, hp: i32, attack: i32, defense: i32) -> Character {
+    fn new(name: &str, hp: i32, attack: i32, defense: i32, speed: i32) -> Character {
         Character {
             name: name.to_string(),
             hp,
             max_hp: hp,
             attack,
             defense,
+            speed,
             alive: true,
         }
     }
+}
+
+fn default_character_speed() -> i32 {
+    10
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

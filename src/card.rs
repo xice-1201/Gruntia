@@ -16,29 +16,31 @@ pub struct Card {
     pub name: String,
     pub kind: CardKind,
     pub cost: u8,
+    #[serde(default)]
+    pub food_cost: u8,
     pub value: i32,
 }
 
 impl Card {
-    pub fn starter_deck() -> Vec<Card> {
-        vec![
-            Card::new("move_step", "Step", CardKind::Move, 1, 1),
-            Card::new("move_step", "Step", CardKind::Move, 1, 1),
-            Card::new("gather_scrap", "Gather", CardKind::Gather, 1, 2),
-            Card::new("gather_scrap", "Gather", CardKind::Gather, 1, 2),
-            Card::new("strike", "Strike", CardKind::Attack, 1, 4),
-            Card::new("strike", "Strike", CardKind::Attack, 1, 4),
-            Card::new("guard", "Guard", CardKind::Defend, 1, 4),
-            Card::new("survey", "Survey", CardKind::Search, 1, 1),
-        ]
+    pub fn available_cards() -> Vec<Card> {
+        vec![Card::move_step(), Card::gather_scrap()]
     }
 
-    fn new(id: &str, name: &str, kind: CardKind, cost: u8, value: i32) -> Card {
+    pub fn move_step() -> Card {
+        Card::new("move_step", "\u{79fb}\u{52a8}", CardKind::Move, 0, 3)
+    }
+
+    pub fn gather_scrap() -> Card {
+        Card::new("gather_scrap", "\u{91c7}\u{96c6}", CardKind::Gather, 1, 2)
+    }
+
+    fn new(id: &str, name: &str, kind: CardKind, food_cost: u8, value: i32) -> Card {
         Card {
             id: id.to_string(),
             name: name.to_string(),
             kind,
-            cost,
+            cost: 0,
+            food_cost,
             value,
         }
     }
